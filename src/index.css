@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Professional Polish Palette */
+  --color-brand-dark: #050505;
+  --color-brand-blue: #00D1FF; /* Original Brand Cyan */
+  --color-brand-accent: #a855f7; /* Electric Purple Highlight */
+  --color-text-main: #f8fafc;
+  --color-text-dim: #94a3b8;
+  --color-glass: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+  body {
+    @apply bg-brand-dark text-text-main font-sans antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-glass backdrop-blur-xl border border-glass-border;
+  }
+
+  .glass-dark {
+    @apply bg-black/40 backdrop-blur-2xl border border-white/5;
+  }
+
+  .neon-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 209, 255, 0.3), 0 0 20px rgba(0, 209, 255, 0.1);
+  }
+
+  .neon-glow-purple {
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.4), 0 0 20px rgba(168, 85, 247, 0.2);
+  }
+
+  .btn-primary {
+    @apply px-8 py-4 rounded-lg bg-brand-blue text-black font-bold transition-all hover:scale-105 active:scale-95 shadow-[0_4px_20px_rgba(0,209,255,0.3)] border border-white/10;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-4 rounded-lg bg-glass backdrop-blur-xl border border-glass-border text-white font-bold transition-all hover:bg-white/10;
+  }
+
+  .badge {
+    @apply inline-block px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/30 text-brand-accent text-[11px] font-bold tracking-[1.5px] uppercase mb-6;
+  }
+}
+
+@layer utilities {
+  .mask-fade-bottom {
+    mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
