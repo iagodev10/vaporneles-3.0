@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Play, ChevronDown, CheckCircle2, CloudLightning as Steam } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
@@ -26,8 +27,8 @@ export default function Hero() {
             transition={{ delay: 0.1 }}
             className="text-6xl md:text-8xl font-display font-extrabold leading-[1.05] tracking-tight mb-8 bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent"
           >
-            A FORÇA DO <br />
-            <span className="text-brand-blue neon-glow-cyan">VAPOR PURO</span>
+            A FORÇA DA <br />
+            <span className="text-brand-blue neon-glow-cyan">LIMPEZA A VAPOR</span>
           </motion.h1>
 
           <motion.p
@@ -36,7 +37,7 @@ export default function Hero() {
             transition={{ delay: 0.2 }}
             className="text-lg md:text-xl text-text-dim max-w-lg mb-10 mx-auto lg:mx-0 leading-relaxed"
           >
-            Engineered for perfection. Soluções ecológicas com tecnologia de ponta e precisão industrial.
+            Sustentabilidade e tecnologia de ponta. Soluções 100% brasileiras para detalhamento automotivo e higienização profunda.
           </motion.p>
 
           <motion.div
@@ -45,12 +46,14 @@ export default function Hero() {
             transition={{ delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
           >
-            <button className="btn-primary">
-              Explore Elite
-            </button>
-            <button className="btn-secondary flex items-center justify-center gap-2">
-              <Play className="w-4 h-4 fill-current" />
-              Watch Reveal
+            <Link to="/produtos">
+              <button className="btn-primary w-full sm:w-auto">
+                Ver Produtos
+              </button>
+            </Link>
+            <button className="btn-secondary flex items-center justify-center gap-2 group transition-all w-full sm:w-auto">
+              <Play className="w-4 h-4 fill-brand-orange text-brand-orange group-hover:scale-110 transition-transform" />
+              Ver Vídeo
             </button>
           </motion.div>
 
@@ -62,7 +65,7 @@ export default function Hero() {
           >
             {['100% Ecológico', 'Baixo Consumo', 'Alta Pressão'].map((feat) => (
               <div key={feat} className="flex items-center gap-2 text-sm font-medium">
-                <CheckCircle2 className="w-4 h-4 text-brand-blue" />
+                <CheckCircle2 className="w-4 h-4 text-brand-orange" />
                 {feat}
               </div>
             ))}

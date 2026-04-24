@@ -66,10 +66,10 @@ export default function Features() {
               transition={{ delay: i * 0.1 }}
               className="group p-8 rounded-3xl glass border-white/5 hover:border-brand-blue/30 transition-all cursor-default"
             >
-              <div className="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue font-bold text-sm mb-6 group-hover:scale-110 group-hover:bg-brand-blue group-hover:text-black transition-all duration-300">
+              <div className="w-10 h-10 rounded-lg bg-brand-orange/10 flex items-center justify-center text-brand-orange font-bold text-sm mb-6 group-hover:scale-110 group-hover:bg-brand-orange group-hover:text-white transition-all duration-300">
                 {String(i + 1).padStart(2, '0')}
               </div>
-              <h3 className="text-lg font-display font-bold mb-3 tracking-wide text-white uppercase">{feat.title}</h3>
+              <h3 className="text-lg font-display font-bold mb-3 tracking-wide text-white uppercase group-hover:text-brand-blue transition-colors">{feat.title}</h3>
               <p className="text-xs text-text-dim leading-relaxed">
                 {feat.desc}
               </p>

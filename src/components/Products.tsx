@@ -28,6 +28,8 @@ const products = [
   }
 ];
 
+import { Link } from 'react-router-dom';
+
 export default function Products() {
   return (
     <section id="produtos" className="py-24 relative">
@@ -93,13 +95,15 @@ export default function Products() {
                 </div>
 
                 <div className="flex items-center justify-between gap-4">
-                  <button className="flex-1 py-3 rounded-lg bg-brand-blue text-black font-bold text-sm flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(0,209,255,0.4)] transition-all">
+                  <button className="flex-1 py-3 rounded-lg bg-brand-orange text-white font-bold text-sm flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(255,87,34,0.4)] transition-all">
                     <ShoppingCart className="w-4 h-4" />
                     Solicitar Orçamento
                   </button>
-                  <button className="p-3 rounded-lg glass border-white/10 hover:bg-white/10 transition-colors">
-                    <ArrowRight className="w-5 h-5 text-white" />
-                  </button>
+                  <Link to="/produtos">
+                    <button className="p-3 rounded-lg glass border-white/10 hover:bg-white/10 transition-colors">
+                      <ArrowRight className="w-5 h-5 text-brand-blue" />
+                    </button>
+                  </Link>
                 </div>
               </div>
             </motion.div>

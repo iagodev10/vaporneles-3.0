@@ -1,15 +1,16 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Wind, Droplets, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar({ scrolled }: { scrolled: boolean }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const links = [
-    { name: 'Produtos', href: '#produtos' },
-    { name: 'Serviços', href: '#servicos' },
-    { name: 'Diferenciais', href: '#diferenciais' },
-    { name: 'Sobre', href: '#sobre' },
+    { name: 'Início', href: '/', internal: true },
+    { name: 'Produtos', href: '/produtos', internal: true },
+    { name: 'Serviços', href: '/#servicos', internal: false },
+    { name: 'Diferenciais', href: '/#diferenciais', internal: false },
   ];
 
   return (
@@ -19,43 +20,59 @@ export default function Navbar({ scrolled }: { scrolled: boolean }) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-2 group cursor-pointer"
-        >
-          <div className="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center relative overflow-hidden">
-            <Wind className="text-black w-6 h-6 z-10" />
-            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-display font-extrabold text-xl tracking-[4px] leading-none text-white uppercase">
-              Vapor<span className="text-brand-blue neon-glow-cyan">neles</span>
-            </span>
-          </div>
-        </motion.div>
+        <Link to="/">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-2 group cursor-pointer"
+          >
+            <div className="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center relative overflow-hidden">
+              <Wind className="text-white w-6 h-6 z-10" />
+              <div className="absolute inset-0 bg-brand-orange translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-display font-extrabold text-xl tracking-[4px] leading-none text-white uppercase">
+                Equip<span className="text-brand-blue">Wash</span>
+              </span>
+              <span className="text-[10px] tracking-[0.2em] font-mono text-brand-orange uppercase font-black">#Vaporneles</span>
+            </div>
+          </motion.div>
+        </Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((link, i) => (
-            <motion.a
+            <motion.div
               key={link.name}
-              href={link.href}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="text-sm font-medium text-white/70 hover:text-brand-blue transition-colors relative group"
             >
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-blue transition-all duration-300 group-hover:w-full" />
-            </motion.a>
+              {link.internal ? (
+                 <Link
+                   to={link.href}
+                   className="text-sm font-medium text-white/70 hover:text-brand-orange transition-colors relative group"
+                 >
+                   {link.name}
+                   <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-orange transition-all duration-300 group-hover:w-full" />
+                 </Link>
+              ) : (
+                <a
+                  href={link.href}
+                  className="text-sm font-medium text-white/70 hover:text-brand-orange transition-colors relative group"
+                >
+                  {link.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-orange transition-all duration-300 group-hover:w-full" />
+                </a>
+              )}
+            </motion.div>
           ))}
           <motion.button
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="px-5 py-2 rounded-full bg-brand-blue text-black font-semibold text-sm hover:shadow-[0_0_20px_rgba(0,209,255,0.4)] transition-all hover:scale-105 active:scale-95 flex items-center gap-2 group"
+            className="px-5 py-2 rounded-lg bg-brand-orange text-white font-semibold text-sm hover:shadow-[0_0_20px_rgba(255,102,0,0.4)] transition-all hover:scale-105 active:scale-95 flex items-center gap-2 group"
           >
-            Contato
+            Loja
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </motion.button>
         </div>
@@ -76,20 +93,31 @@ export default function Navbar({ scrolled }: { scrolled: boolean }) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-brand-deep/95 backdrop-blur-2xl border-b border-white/10"
+            className="md:hidden bg-brand-dark/95 backdrop-blur-2xl border-b border-white/10"
           >
             <div className="px-6 py-8 flex flex-col gap-6">
               {links.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.href}
-                  className="text-2xl font-display font-medium hover:text-brand-blue transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
+                link.internal ? (
+                  <Link 
+                    key={link.name} 
+                    to={link.href}
+                    className="text-2xl font-display font-medium hover:text-brand-blue transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a 
+                    key={link.name} 
+                    href={link.href}
+                    className="text-2xl font-display font-medium hover:text-brand-blue transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </a>
+                )
               ))}
-              <button className="w-full py-4 rounded-xl bg-brand-blue text-black font-bold text-lg">
+              <button className="w-full py-4 rounded-xl bg-brand-orange text-white font-bold text-lg">
                 Falar com Especialista
               </button>
             </div>

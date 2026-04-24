@@ -17,7 +17,8 @@ export default function Footer() {
                 <Wind className="text-black w-6 h-6" />
               </div>
               <div className="flex flex-col">
-                <span className="font-display font-extrabold text-xl tracking-[4px] leading-none uppercase">Vapor<span className="text-brand-blue">neles</span></span>
+                <span className="font-display font-extrabold text-xl tracking-[4px] leading-none uppercase">Equip<span className="text-brand-blue">Wash</span></span>
+                <span className="text-[10px] font-mono text-brand-orange uppercase font-black">#Vaporneles</span>
               </div>
             </div>
             <p className="text-text-dim text-sm leading-relaxed mb-6 max-w-xs">
@@ -42,7 +43,7 @@ export default function Footer() {
               {['Produtos', 'Serviços', 'Acessórios', 'Manutenção', 'Contato'].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-white/50 text-sm hover:text-brand-blue transition-colors flex items-center gap-2 group">
-                    <span className="w-0 h-px bg-brand-blue group-hover:w-4 transition-all" />
+                    <span className="w-0 h-px bg-brand-orange group-hover:w-4 transition-all" />
                     {item}
                   </a>
                 </li>
@@ -55,8 +56,8 @@ export default function Footer() {
             <ul className="space-y-4">
               {['Manual do Usuário', 'Garantia', 'Treinamentos', 'Peças Originais', 'FAQ'].map((item) => (
                 <li key={item}>
-                  <a href="#" className="text-white/50 text-sm hover:text-brand-blue transition-colors flex items-center gap-2 group">
-                    <span className="w-0 h-px bg-brand-blue group-hover:w-4 transition-all" />
+                  <a href="#" className="text-white/50 text-sm hover:text-brand-orange transition-colors flex items-center gap-2 group">
+                    <span className="w-0 h-px bg-brand-orange group-hover:w-4 transition-all" />
                     {item}
                   </a>
                 </li>
@@ -68,7 +69,7 @@ export default function Footer() {
             <h4 className="font-display font-bold text-lg mb-6 tracking-wide">Contato</h4>
             <ul className="space-y-6">
               <li className="flex gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-brand-blue flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-brand-orange flex-shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
@@ -77,7 +78,7 @@ export default function Footer() {
                 </div>
               </li>
               <li className="flex gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-brand-blue flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-brand-orange flex-shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
@@ -86,7 +87,7 @@ export default function Footer() {
                 </div>
               </li>
               <li className="flex gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-brand-blue flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-brand-orange flex-shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
